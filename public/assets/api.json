@@ -1,0 +1,51 @@
+[
+	{
+		"audio": "/assets/music/Relaxation.mp3",
+		"cover": "/assets/music/Relaxation.webp",
+		"author": "Pixabay.com",
+		"title": "Relaxation",
+		"id": "track_1"
+	},
+	{
+		"audio": "/assets/music/Birds.mp3",
+		"cover": "/assets/music/Birds.webp",
+		"author": "Pixabay.com",
+		"title": "Birds",
+		"id": "track_2"
+	},
+	{
+		"audio": "/assets/music/Wind.mp3",
+		"cover": "/assets/music/Wind.webp",
+		"author": "Pixabay.com",
+		"title": "Wind",
+		"id": "track_3"
+	},
+	{
+		"audio": "/assets/music/Mountain-forest.mp3",
+		"cover": "/assets/music/Mountain-forest.webp",
+		"author": "Pixabay.com",
+		"title": "Mountain-forest",
+		"id": "track_4"
+	},
+	{
+		"audio": "/assets/music/Ocean.mp3",
+		"cover": "/assets/music/Ocean.webp",
+		"author": "Pixabay.com",
+		"title": "Ocean",
+		"id": "track_5"
+	},
+	{
+		"audio": "/assets/music/Fireplace.mp3",
+		"photo": "/assets/music/Fireplace.webp",
+		"author": "Pixabay.com",
+		"title": "Fireplace",
+		"id": "track_6"
+	},
+	{
+		"audio": "/assets/music/Rain.mp3",
+		"photo": "/assets/music/Rain.webp",
+		"author": "Pixabay.com",
+		"title": "Rain",
+		"id": "track_7"
+	}
+]
