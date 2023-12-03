@@ -33,19 +33,5 @@
 		"author": "Pixabay.com",
 		"title": "Ocean",
 		"id": "track_5"
-	},
-	{
-		"audio": "/assets/music/Fireplace.mp3",
-		"photo": "/assets/music/Fireplace.webp",
-		"author": "Pixabay.com",
-		"title": "Fireplace",
-		"id": "track_6"
-	},
-	{
-		"audio": "/assets/music/Rain.mp3",
-		"photo": "/assets/music/Rain.webp",
-		"author": "Pixabay.com",
-		"title": "Rain",
-		"id": "track_7"
 	}
 ]

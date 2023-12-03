@@ -1,32 +1,48 @@
 import { useState, useEffect, useRef } from "react";
 import "./App.css";
 
+interface Music {
+	audio: string;
+	cover: string;
+	author: string;
+	title: string;
+	id: string;
+}
+
 const APImusic = "/assets/api.json";
 
 function App() {
-	const [music, setMusic] = useState([]);
-	const [playLista, setPlayLista] = useState(0);
-	const audioRef = useRef();
+	const [music, setMusic] = useState<Music[]>([]);
+	const [playLista, setPlayLista] = useState<number>(0);
+	const audioRef = useRef<HTMLAudioElement | null>(null);
 
 	useEffect(() => {
-		if (audioRef.current) {
+		if (audioRef.current && music.length > playLista) {
 			audioRef.current.src = music[playLista].audio;
 			audioRef.current.load();
 		}
-	}, [playLista, setPlayLista]);
+	}, [playLista, setPlayLista, music]);
 
 	useEffect(() => {
-		fetch(APImusic).then((response) => {
-			if (response.ok) {
-				response.json().then(setMusic);
+		const fetchMusic = async () => {
+			try {
+				const response = await fetch(APImusic);
+				if (response.ok) {
+					const musicData: Music[] = await response.json();
+					setMusic(musicData);
+				}
+			} catch (error) {
+				console.error("Error fetching music:", error);
 			}
-		});
+		};
+
+		fetchMusic();
 	}, []);
 
 	if (music.length < 1) {
 		return (
 			<div>
-				Loader...<i class='fa-solid fa-spinner'></i>
+				Loader...<i className='fa-solid fa-spinner'></i>
 			</div>
 		);
 	}
@@ -37,23 +53,25 @@ function App() {
 				<div className=' text-white flex-col m-auto justify-center bg-gray-900 items-center'>
 					<section className='bg-black text-white text-center p-8'>
 						<h1 className='text-3xl font-bold mb-4'>
-							<i class='fa-solid fa-headphones'></i> Play lista - RELAXING Music
+							<i className='fa-solid fa-headphones'></i> Play lista - RELAXING
+							Music
 						</h1>
 						<img
 							src={music[playLista].cover}
 							className='shadow-lg my-4 w-64 mx-auto object-cover'
+							alt='Album cover'
 						/>
 						<button
 							className='bg-blue-500 hover:bg-blue-700 text-white rounded-full cursor-pointer py-2 px-4 mr-4'
-							onClick={() => audioRef.current.play()}
+							onClick={() => audioRef.current?.play()}
 						>
-							<i class='fa-solid fa-circle-play'></i> Play
+							<i className='fa-solid fa-circle-play'></i> Play
 						</button>
 						<button
 							className='bg-indigo-500 hover:bg-indigo-700 text-white cursor-pointer rounded-full py-2 px-4'
-							onClick={() => audioRef.current.pause()}
+							onClick={() => audioRef.current?.pause()}
 						>
-							<i class='fa-solid fa-circle-pause'></i> Pausa
+							<i className='fa-solid fa-circle-pause'></i> Pausa
 						</button>
 						<audio ref={audioRef}>
 							<source src={music[playLista].audio} />
